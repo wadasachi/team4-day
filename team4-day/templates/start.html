@@ -1,0 +1,52 @@
+<!-- start.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>スタート</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            text-align: center; /* テキストを中央揃え */
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            background-color: #4CAF50; /* 緑色に設定 */
+            color: white; /* テキストを白色に */
+            border: none; /* 枠線なし */
+            padding: 10px 20px; /* パディングを追加 */
+            border-radius: 5px; /* 角丸に設定 */
+            font-size: 18px; /* フォントサイズを大きく設定 */
+            cursor: pointer; /* ポインターを追加 */
+            transition: background-color 0.3s; /* 背景色の変化を滑らかに */
+            margin-bottom: 20px; /* ボタン下に余白を追加 */
+        }
+        button:hover {
+            background-color: #45a049; /* ホバー時の色を濃い緑に変更 */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>じゅんびフレンド</h1>
+        <!-- スタートボタンをタップしたらindex.htmlに遷移 -->
+        <button onclick="location.href='/index.html';">スタート！</button>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRSCngtlPBwcS-ahI3KO-dnfG3Z_Maii_lRg5HqD5WKKS-k54ENc4XW2YElqJ-e_LZB86AIrngM-uo8HowVI9vwlYBAxovu9r_2a4qiEUsZ8btJJ2COAMkHMQQaVZ8JnzpIQNuJaeZBqzG/s180-c/pose_gutspose_family_set.png" alt="イラスト">
+    </div>
+</body>
+</html>

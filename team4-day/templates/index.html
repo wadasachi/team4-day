@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>持ちものアプリ</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        input[type="checkbox"], input[type="date"] {
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            background-color: #ff4d4d; /* 赤色に変更 */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #cc0000; /* ホバー時の色を濃い赤に変更 */
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 1px 3px #ddd;
+            background-color: white;
+            resize: none; /* リサイズ不可に設定 */
+        }
+    </style>
+</head>
+<body>
+    <h1>もちものをかくにんしよう！</h1>
+    <form action="/submit" method="post">
+        <h2>いつ</h2>
+        <input type="date" name="date">
+        <h2>まいにちじゅんび</h2>
+        <input type="checkbox" name="daily_items" value="ランドセル">ランドセル
+        <input type="checkbox" name="daily_items" value="ぼうし">ぼうし
+        <input type="checkbox" name="daily_items" value="ハンカチ">ハンカチ
+        <input type="checkbox" name="daily_items" value="ティッシュ">ティッシュ
+        <input type="checkbox" name="daily_items" value="プリント">プリント
+        <h2>このひだけじゅんび</h2>
+        <input type="checkbox" name="variable_items" value="給食セット">給食セット
+        <input type="checkbox" name="variable_items" value="えのぐセット">えのぐセット
+        <input type="checkbox" name="variable_items" value="体育セット">体育セット
+        <input type="checkbox" name="variable_items" value="習字セット">習字セット
+        <input type="checkbox" name="variable_items" value="としょの本">としょの本
+        <h2>そのほか</h2>
+        <textarea name="other_items"></textarea>
+        <br>
+        <!-- 送信ボタンの変更 -->
+        <input type="submit" value="そうしん">
+    </form>
+</body>
+</html>

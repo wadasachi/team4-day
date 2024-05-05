@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>登録結果</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li, p {
+            background-color: #ffffff;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .item-input {
+            display: block;
+            border: none;
+            background-color: #ffffff;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        li.active, p.active, .item-input.active {
+            background-color: #ff0000;
+            color: white;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .daily-item-checkbox, .variable_item-checkbox, .other-item-checkbox {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var itemInputs = document.querySelectorAll('.item-input');
+            itemInputs.forEach(function(label) {
+                var checkbox = document.getElementById(label.getAttribute('for'));
+                label.onclick = function() {
+                    checkbox.checked = !checkbox.checked; // Toggle the checkbox
+                    label.style.backgroundColor = checkbox.checked ? '#ff0000' : '#ffffff'; // Change background color
+                    label.style.color = checkbox.checked ? 'white' : '#333'; // Change text color
+                };
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>じゅんびをしてみよう！</h1>
+    <h2>いつ</h2>
+    <p onclick="toggleColor(this)">{{ date }}</p>
+    <form action="/submit_ready" method="post">
+        <h2>まいにちじゅんび</h2>
+        <ul>
+            {% for item in daily_items %}
+            <label for="daily-item{{loop.index}}" class="item-input {% if item in selected_daily_items %}active{% endif %}">
+                {{ item }}
+                <input class="daily-item-checkbox" id="daily-item{{loop.index}}" value="{{item}}" name="selected_daily_items" type="checkbox" {% if item in selected_daily_items %}checked{% endif %}>
+            </label>
+            {% endfor %}
+        </ul>
+        <h2>このひだけじゅんび</h2>
+        <ul>
+            {% for item in variable_items %}
+            <label for="variable_item{{loop.index}}" class="item-input {% if item in selected_variable_items %}active{% endif %}">
+                {{ item }}
+                <input class="variable_item-checkbox" id="variable_item{{loop.index}}" value="{{item}}" name="selected_variable_items" type="checkbox" {% if item in selected_variable_items %}checked{% endif %}>
+            </label>
+            {% endfor %}
+        </ul>
+        <h2>そのほか</h2>
+        <label for="other-items-checkbox" class="item-input {% if other_items_selected %}active{% endif %}">
+            {{ other_items }}
+            <input class="other-item-checkbox" id="other-items-checkbox" name="other_items_selected" type="checkbox" {% if other_items_selected %}checked{% endif %}>
+        </label>
+        <button type="submit" style="width: 100%;">じゅんびできたよ！！</button>
+    </form>
+</body>
+</html>
